@@ -1,0 +1,71 @@
+// list all guests
+GET http://localhost:3000/guests
+
+###
+
+// list all groups (families, couples, etc.)
+GET http://localhost:3000/groups
+
+###
+
+// query one guest
+GET http://localhost:3000/guests/64aa821629e67dde78f56c55
+
+###
+
+// list the members of a group
+GET http://localhost:3000/groups/64a9ea77e4a4c40b41eaa826/guests
+
+###
+
+// creating new guest
+POST http://localhost:3000/guests
+Content-Type: application/json
+
+{
+    "name": "Janka",
+    "vegetarian": false,
+    "age3": true
+}
+
+###
+
+// removing a guest
+DELETE http://localhost:3000/guests/64812123c354515d639355f4
+
+###
+
+// updating a guest
+PATCH http://localhost:3000/guests/64a9d2158313f9a835dd1d1a
+Content-Type: application/json
+
+{
+    "name": "Janka",
+    "attending": true,
+    "test": "test",
+    "vegetarian": true 
+}
+
+###
+
+PUT http://localhost:3000/guests
+Content-Type: application/json
+
+[
+    {
+        "_id": "64aa829629e67dde78f56c5b",
+        "name": "Bori",
+        "vegetarian": false,
+        "age3": false,
+        "attending": false,
+        "group": "64a9ea77e4a4c40b41eaa826"
+    },
+    {
+        "_id": "64aa82af29e67dde78f56c5d",
+        "name": "Janka",
+        "vegetarian": false,
+        "age3": false,
+        "attending": false,
+        "group": "64a9ea77e4a4c40b41eaa826"
+    }
+]
