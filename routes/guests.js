@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Guest = require('../models/guest')
+const ObjectId = require('mongodb').ObjectId;
 
 router.get('/', async (req, res) => {
     try {
@@ -84,13 +85,21 @@ async function getGuest(req, res, next) {
 
 async function updateGuests(req, res, next) {
     const updates = req.body
-    const bulkOps = updates.map(update => ({
-        updateOne: {
-            filter: { _id: update._id },
-            update: { $set: update },
-            upsert: true
+    const bulkOps = updates.map(function(update) {
+        let personId;
+        if (!update._id) {
+            personId = new ObjectId();
+            update._id = personId.toHexString();
+        } 
+        personId = new ObjectId(update._id);
+        return {
+            updateOne: {
+                filter: { _id: personId },
+                update: { $set: update },
+                upsert: true
+            }
         }
-    }))
+    })
 
     try {
         const result = await Guest.bulkWrite(bulkOps);
