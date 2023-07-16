@@ -12,6 +12,10 @@ const groupSchema = new mongoose.Schema({
     lang: {
         type: String,
         required: true
+    },
+    respond: {
+        type: String,
+        required: true
     }
 })
 
