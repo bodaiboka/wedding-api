@@ -46,6 +46,9 @@ router.patch('/:id', getGroup, async (req, res) => {
     if (req.body.lang != null) {
         res.group.lang = req.body.lang
     }
+    if (req.body.respond != null) {
+        res.group.respond = req.body.respond
+    }
     try {
         const updateGroup = await res.group.save()
         res.json(updateGroup)
