@@ -102,10 +102,10 @@ async function updateGuests(req, res, next) {
     })
 
     try {
-        const result = await Guest.bulkWrite(bulkOps);
+        const result = await Guest.bulkWrite(bulkOps);/*
         if (result.modifiedCount === 0) {
             return res.status(404).json({ message: 'No family members were updated' })
-        }
+        }*/
         return res.json({ message: 'Family members updated successfully' })
     } catch (error) {
         console.error(error);

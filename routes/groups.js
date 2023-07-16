@@ -71,7 +71,7 @@ async function getGroup(req, res, next) {
     try {
         group = await Group.findById(req.params.id)
         if (group == null) {
-            return res.status(404).json({ message: 'Cannot find guest'})
+            return res.status(404).json({ message: 'Cannot find group'})
         }
     }
     catch (err) {
